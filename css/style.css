@@ -71,6 +71,10 @@ kbd { display: inline-grid; place-items: center; width: 29px; height: 30px; bord
 .touch-controls button:active { background: #226c4c; }
 footer { text-align: center; color: #466177; letter-spacing: 6px; font-size: 12px; padding-top: 24px; }
 [hidden] { display: none !important; }
+/* Match the preferred 90% desktop scale without changing browser zoom or mobile sizing. */
+@media (min-width: 801px) {
+    .app { zoom: 0.9; }
+}
 @media (pointer: coarse) { .touch-controls { display: flex; } }
 @media (max-width: 1150px) { .app { padding: 25px 24px; } .masthead { margin: 0 12px 24px; } .game-layout { gap: 22px; grid-template-columns: minmax(155px, 1fr) minmax(0, 2.5fr) minmax(155px, 1fr); } .info-panel { padding: 22px 18px; } h2 { font-size: 13px; } .control-row { gap: 12px; } .control-row p { font-size: 11px; } .current-score { font-size: 42px; } .quote { font-size: 16px; margin-top: 28px; } .encouragement { margin-top: 28px; } .ready-overlay { padding: 18px; } .ready-overlay .overlay-hint { margin-top: 11px; } .ready-overlay h2 { font-size: 23px; } .good-luck { font-size: 32px; } }
 @media (max-width: 800px) {
