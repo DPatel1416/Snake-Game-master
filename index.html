@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Mania</title>
-    <link rel="stylesheet" href="css/style.css">   
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f5ef">
+<title>Snake Mania — A little classic. A fresh start.</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/index.js" defer></script>
 </head>
 <body>
-
-    <div class="body">
-        <div id="scoreBox">Score: 0</div>
-        <div id="hiscoreBox">HiScore: 0</div>
-        <div id="board"></div> 
-    </div>
-    
+<main class="app">
+<header class="topbar">
+<a class="brand" href="./" aria-label="Snake Mania home"><span class="brand-mark" aria-hidden="true">s.</span>snake<span class="brand-light">mania</span></a>
+<span class="edition">THE CLASSICS COLLECTION <span>001</span></span>
+</header>
+<section class="game-layout" aria-label="Snake game">
+<aside class="intro">
+<div class="eyebrow"><span class="tiny-dot"></span> SMALL GAME. BIG NOSTALGIA.</div>
+<h1>Just one<br>more <span>bite.</span></h1>
+<p class="description">The classic you know. A fresh way to play.<br>Find your rhythm, chase the next bite, and see how far you can grow.</p>
+<div class="stats">
+<div class="stat"><span class="stat-label">YOUR SCORE</span><strong id="scoreBox">00</strong><span class="stat-caption">Every bite counts</span></div>
+<div class="stat best"><span class="stat-label">✧ PERSONAL BEST</span><strong id="hiscoreBox">00</strong><span class="stat-caption">A little higher next time</span></div>
+</div>
+<section class="how-to" aria-labelledby="controlsTitle">
+<h2 id="controlsTitle">Simple moves. Endless possibilities.</h2>
+<div class="control-row"><span class="key-group"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd></span><span>Move around</span></div>
+<div class="control-row"><kbd class="space-key">space</kbd><span>Take a breather</span></div>
+<p>Grab the orange bites. Wrap around the edges. Avoid your tail.</p>
+</section>
+<div class="intro-footer"><span class="little-star" aria-hidden="true">✳</span> No rush. Just you and the next high score.</div>
+</aside>
+<section class="game-card" aria-label="Play area">
+<div class="game-toolbar"><span class="status"><span class="tiny-dot"></span><span id="statusText" role="status">READY WHEN YOU ARE</span></span><button id="soundButton" class="text-button" type="button" aria-pressed="false">Sound off ♪</button></div>
+<div class="board-wrap">
+<div id="board" role="img" aria-label="18 by 18 Snake game board"></div>
+<div id="overlay" class="overlay">
+<div class="overlay-content">
+<span class="overlay-icon" aria-hidden="true">↗</span>
+<span id="overlayEyebrow" class="overlay-eyebrow">A FAMILIAR FAVORITE</span>
+<h2 id="overlayTitle">Let’s get growing.</h2>
+<p id="overlayDescription">A small start. A new personal best.</p>
+<button id="startButton" class="primary-button" type="button">Let’s play ↗</button>
+<span id="overlayHint" class="overlay-hint">or press any arrow key</span>
+</div>
+</div>
+</div>
+<div class="game-bottom"><span><span class="live-dot"></span> CLASSIC MODE <span class="board-size">/ 18 × 18</span></span><button id="pauseButton" class="text-button" type="button" disabled>Pause Ⅱ</button></div>
+<div class="touch-controls" aria-label="Directional controls"><button type="button" data-direction="ArrowLeft" aria-label="Move left">←</button><button type="button" data-direction="ArrowUp" aria-label="Move up">↑</button><button type="button" data-direction="ArrowDown" aria-label="Move down">↓</button><button type="button" data-direction="ArrowRight" aria-label="Move right">→</button></div>
+</section>
+</section>
+<footer class="page-footer"><span>LESS SCROLLING. MORE SNAKING.</span><span>Made for your little breaks ↗</span></footer>
+</main>
 </body>
-<script src="js/index.js"></script>
 </html>
