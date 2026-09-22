@@ -88,7 +88,7 @@ test('reverse and multiple turns within one tick are rejected', () => {
     assert.equal(g.run('snake[0].x'), 8); assert.equal(g.run('snake[0].y'), 9);
 });
 test('unrelated keys do not start or redirect the game', () => {
-    const g = game(); g.events.keydown({key:'a',target:{tagName:'BODY'}});
+    const g = game(); g.events.keydown({key:'q',target:{tagName:'BODY'}});
     assert.equal(g.run('state'), 'ready');
 });
 test('food is only generated in empty cells and full board is detected', () => {
@@ -105,4 +105,39 @@ test('self collision ends game; moving into vacated tail is allowed', () => {
 });
 test('invalid stored score falls back to zero', () => {
     assert.equal(game('not a score').run('best'), 0);
+});
+test('WASD steer and P pauses and resumes without repeating', () => {
+    const g = game();
+    const key = (value, repeat = false) => g.events.keydown({ key:value, repeat, target:{tagName:'BODY'}, preventDefault() {} });
+    key('W'); g.run('tick()');
+    assert.equal(g.run('snake[0].y'), 9);
+    key('a'); g.run('tick()');
+    assert.equal(g.run('snake[0].x'), 6);
+    key('s'); g.run('tick()');
+    assert.equal(g.run('snake[0].y'), 10);
+    key('d'); g.run('tick()');
+    assert.equal(g.run('snake[0].x'), 7);
+    key('p'); assert.equal(g.run('state'), 'paused');
+    key('p', true); assert.equal(g.run('state'), 'paused');
+    key('p'); assert.equal(g.run('state'), 'playing');
+});
+test('R restarts even while paused and resets score and speed', () => {
+    const g = game(); g.run('start(); score=15; updateScores(); tick(); togglePause()');
+    g.events.keydown({key:'r',target:{tagName:'BODY'},preventDefault(){}});
+    assert.equal(g.run('state'), 'playing');
+    assert.equal(g.run('score'), 0);
+    assert.equal(g.run('speed'), 5);
+    assert.equal(g.run('snake[0].x'), 7);
+});
+test('levels and speed meter advance every five apples and cap at level seven', () => {
+    const g = game();
+    assert.equal(g.nodes.get('levelBox').textContent, '1');
+    g.run('score=5; updateScores()');
+    assert.equal(g.nodes.get('levelBox').textContent, '2');
+    assert.equal(g.run('speed'), 6);
+    assert.equal(g.nodes.get('speedMeter').children.filter(bar=>bar.className==='lit').length, 5);
+    g.run('score=50; updateScores()');
+    assert.equal(g.nodes.get('levelBox').textContent, '7');
+    assert.equal(g.run('speed'), 11);
+    assert.equal(g.nodes.get('speedMeter').children.filter(bar=>bar.className==='lit').length, 10);
 });

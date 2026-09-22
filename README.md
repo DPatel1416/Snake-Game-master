@@ -16,17 +16,18 @@ To play the game, follow these steps:
 
 ## Gameplay
 
-- Use the arrow keys (Up, Down, Left, Right) to control the direction of the snake.
+- Use the arrow keys or WASD to control the direction of the snake.
 - Eat the food to increase your score.
 - Cross any board edge to continue from the opposite side. Avoid colliding with the snake's own body.
-- Click **Let’s play** or press an arrow key to start.
-- Press **Space** or use the **Pause** button to pause and resume.
+- Click **Play** or press a direction key to start.
+- Press **P**, **Space**, or use the **Pause** button to pause and resume. Press **R** or click **Restart** for a new run.
+- Every five apples raises the level and speed, up to level 7 (11 cells per second).
 - Use the on-screen arrows on mobile. Sound is off initially; toggle **Sound off** to enable it.
 - Your personal best is saved in this browser. Switching tabs automatically pauses the game.
 
 ## Interface
 
-The responsive interface pairs a cream background and score cards with a forest-green game board, a mint snake, and orange food. Start, pause, and game-over screens appear inside the board.
+The responsive interface uses a dark navy background, a glowing mint board, a green snake, and a red SVG apple. Score and control panels sit to the left, with level, speed, and pause controls to the right. On mobile, scores move above the board and touch controls appear below it. System fonts keep the interface independent of font downloads.
 
 ## Checks
 
